@@ -37,10 +37,12 @@ class CarsIndex extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  garage: state.garage,
-  cars: state.cars
-});
+function mapStateToProps(state) {
+  return {
+    garage: state.garage,
+    cars: state.cars
+  };
+};
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchCars }, dispatch);

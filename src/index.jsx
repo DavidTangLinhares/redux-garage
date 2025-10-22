@@ -12,7 +12,9 @@ import '../assets/stylesheets/application.scss';
 
 import carsReducer from './reducers/cars_reducer';
 import CarsIndex from './containers/cars_index';
-import CarsForm from './containers/cars_form';
+import CarsForm from './containers/cars_new';
+
+import { reducer as formReducer } from 'redux-form';
 
 const garageName = 'test'; // or prompt("What's your garage?")
 
@@ -23,7 +25,8 @@ const initialState = {
 
 const reducers = combineReducers({
   garage: (state = garageName, action) => state,
-  cars: carsReducer
+  cars: carsReducer,
+  form: formReducer
 });
 
 const middlewares = applyMiddleware(reduxPromise, logger);
