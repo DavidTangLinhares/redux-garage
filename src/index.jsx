@@ -1,3 +1,5 @@
+// src/index.jsx
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -10,6 +12,7 @@ import '../assets/stylesheets/application.scss';
 
 import carsReducer from './reducers/cars_reducer';
 import CarsIndex from './containers/cars_index';
+import CarsForm from './containers/cars_form';
 
 const garageName = 'test'; // or prompt("What's your garage?")
 
@@ -19,7 +22,7 @@ const initialState = {
 };
 
 const reducers = combineReducers({
-  garage: (state = null, action) => state,
+  garage: (state = garageName, action) => state,
   cars: carsReducer
 });
 
@@ -32,6 +35,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/" component={CarsIndex} />
+        <Route path="/new" component={CarsForm} />
       </Switch>
     </Router>
   </Provider>,
