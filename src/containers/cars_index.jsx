@@ -18,14 +18,12 @@ class CarsIndex extends Component {
     return (
       <div>
         <h1>
-          Cars in
-          {garage}
+          Cars in {garage}
         </h1>
         <ul>
           {cars.map(car => (
             <li key={car.id}>
-              {car.brand}
-              {car.model}
+              {car.brand} {car.model}
               — Owner: {car.owner}
               — Plate: {car.plate}
             </li>
