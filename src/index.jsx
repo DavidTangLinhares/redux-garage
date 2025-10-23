@@ -13,6 +13,7 @@ import '../assets/stylesheets/application.scss';
 import carsReducer from './reducers/cars_reducer';
 import CarsIndex from './containers/cars_index';
 import CarsForm from './containers/cars_new';
+import CarsShow from './containers/cars_show';
 
 import { reducer as formReducer } from 'redux-form';
 
@@ -36,10 +37,13 @@ const store = createStore(reducers, initialState, middlewares);
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <Switch>
-        <Route exact path="/" component={CarsIndex} />
-        <Route path="/new" component={CarsForm} />
-      </Switch>
+      <div className="view-container">
+        <Switch>
+          <Route exact path="/" component={CarsIndex} />
+          <Route path="/cars/new" component={CarsForm} />
+          <Route path="/cars/:id" component={CarsShow} />
+        </Switch>
+      </div>
     </Router>
   </Provider>,
   document.getElementById('root')

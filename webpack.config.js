@@ -51,6 +51,10 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource', // Webpack 5 built-in handling for images
       }
     ]
   },
