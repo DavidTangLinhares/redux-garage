@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { addCar } from '../actions';
 
+import Aside from '../components/aside';
+
+
 // === VALIDATIONS ===
 const required = value => (value ? undefined : 'Required');
 
@@ -27,7 +30,7 @@ const renderField = ({
 }) => (
   <div className="form-group">
     <label>{label}</label>
-    <input {...input} placeholder={label} type={type} />
+    <input {...input} placeholder={label} type={type} className="form-input" />
     {touched && error && <div className="error-message">{error}</div>}
   </div>
 );
@@ -41,13 +44,15 @@ class CarsForm extends Component {
   };
 
   render() {
-    const { handleSubmit, garage, pristine, submitting, invalid } = this.props;
+    const { handleSubmit, pristine, submitting, invalid, garage } = this.props;
 
-    return (
+    return [
+      <Aside garage={garage}>
+        <Link to="/" className="btn-back">Back to list</Link>
+      </Aside>,
       <div className="form-container">
         <div className="overlay"></div>
         <form onSubmit={handleSubmit(this.onSubmit)}>
-
           <Field
             name="brand"
             label="Brand"
@@ -80,14 +85,18 @@ class CarsForm extends Component {
             validate={[required, plateFormat]}
           />
 
-          <button type="submit" disabled={pristine || submitting || invalid}>
+          <button
+            type="submit"
+            disabled={pristine || submitting || invalid}
+            className="submit-button"
+          >
             Add car
           </button>
 
-          <p><Link to="/">→ Garage</Link></p>
+          <p><Link to="/" className="link">→ Garage</Link></p>
         </form>
       </div>
-    );
+    ];
   }
 }
 

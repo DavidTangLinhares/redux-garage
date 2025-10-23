@@ -12,12 +12,12 @@ import '../assets/stylesheets/application.scss';
 
 import carsReducer from './reducers/cars_reducer';
 import CarsIndex from './containers/cars_index';
-import CarsForm from './containers/cars_new';
+import CarsNew from './containers/cars_new';
 import CarsShow from './containers/cars_show';
 
 import { reducer as formReducer } from 'redux-form';
 
-const garageName = 'test'; // or prompt("What's your garage?")
+const garageName = prompt("What's your garage?");
 
 const initialState = {
   garage: garageName,
@@ -40,7 +40,7 @@ ReactDOM.render(
       <div className="view-container">
         <Switch>
           <Route exact path="/" component={CarsIndex} />
-          <Route path="/cars/new" component={CarsForm} />
+          <Route path="/cars/new" component={CarsNew} />
           <Route path="/cars/:id" component={CarsShow} />
         </Switch>
       </div>
