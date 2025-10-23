@@ -17,7 +17,7 @@ import CarsShow from './containers/cars_show';
 
 import { reducer as formReducer } from 'redux-form';
 
-const garageName = prompt("What's your garage?");
+const garageName = 'test'; //prompt("What's your garage?");
 
 const initialState = {
   garage: garageName,

@@ -7,7 +7,6 @@ import { addCar } from '../actions';
 
 import Aside from '../components/aside';
 
-
 // === VALIDATIONS ===
 const required = value => (value ? undefined : 'Required');
 
@@ -30,7 +29,7 @@ const renderField = ({
 }) => (
   <div className="form-group">
     <label>{label}</label>
-    <input {...input} placeholder={label} type={type} className="form-input" />
+    <input {...input} placeholder={label} type={type} className="form-control" />
     {touched && error && <div className="error-message">{error}</div>}
   </div>
 );
@@ -47,19 +46,20 @@ class CarsForm extends Component {
     const { handleSubmit, pristine, submitting, invalid, garage } = this.props;
 
     return [
-      <Aside garage={garage}>
+      <Aside key="aside" garage={garage}>
         <Link to="/" className="btn-back">Back to list</Link>
       </Aside>,
-      <div className="form-container">
+      <div key="form" className="form-container">
         <div className="overlay"></div>
         <form onSubmit={handleSubmit(this.onSubmit)}>
-          <Field
-            name="brand"
-            label="Brand"
-            component={renderField}
-            type="text"
-            validate={[required]}
-          />
+            <Field
+              name="brand"
+              label="Brand"
+              component={renderField}
+              type="text"
+              validate={[required]}
+              className="form-control"
+            />
 
           <Field
             name="model"
@@ -93,7 +93,6 @@ class CarsForm extends Component {
             Add car
           </button>
 
-          <p><Link to="/" className="link">→ Garage</Link></p>
         </form>
       </div>
     ];
